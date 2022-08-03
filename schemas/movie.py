@@ -1,8 +1,9 @@
 from datetime import date, datetime, timedelta
-from typing import Union
+from typing import List, Union
 from pydantic import BaseModel, Field
 
 from schemas.artist import GetArtist
+from schemas.comment import GetComment
 
 
 class MovieBase(BaseModel):
@@ -20,6 +21,7 @@ class PostMovie(MovieBase):
 
 class GetMovie(MovieBase):
     id: str
+    comments: List[GetComment]
     director_person: GetArtist
     actor_person: GetArtist
     actress_person: GetArtist
