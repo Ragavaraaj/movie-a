@@ -17,15 +17,15 @@ def get_roles(db: Session):
 
 def create_role(db: Session, desc: str):
     gId = str(uuid1())
-    db_user = Role(
+    db_role = Role(
         id=gId,
         desc=desc
     )
 
-    db.add(db_user)
+    db.add(db_role)
     db.commit()
-    db.refresh(db_user)
-    return db_user
+    db.refresh(db_role)
+    return db_role
 
 
 def delete_role(db: Session, p_id: int):
