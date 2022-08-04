@@ -18,17 +18,17 @@ def get_artists(db: Session):
 
 def create_artist(db: Session, data: PostArtist):
     gId = str(uuid1())
-    db_user = Artist(
+    db_artist = Artist(
         id=gId,
         name=data.name,
         gender=data.gender,
         role_id=data.role_id
     )
 
-    db.add(db_user)
+    db.add(db_artist)
     db.commit()
-    db.refresh(db_user)
-    return db_user
+    db.refresh(db_artist)
+    return db_artist
 
 
 def delete_artist(db: Session, p_id: int):

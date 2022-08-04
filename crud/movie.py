@@ -18,7 +18,7 @@ def get_movies(db: Session):
 
 def create_movie(db: Session, data: PostMovie):
     gId = str(uuid1())
-    db_user = Movie(
+    db_movie = Movie(
         id=gId,
         name=data.name,
         release_date=data.release_date,
@@ -27,10 +27,10 @@ def create_movie(db: Session, data: PostMovie):
         director_person_id=data.director_person_id
     )
 
-    db.add(db_user)
+    db.add(db_movie)
     db.commit()
-    db.refresh(db_user)
-    return db_user
+    db.refresh(db_movie)
+    return db_movie
 
 
 def delete_movie(db: Session, p_id: int):

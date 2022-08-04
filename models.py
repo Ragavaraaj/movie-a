@@ -14,7 +14,7 @@ class Movie(Base):
     name = Column(String)
     release_date = Column(String)
 
-    # comments = relationship("Comment")
+    comments = relationship("Comment")
 
     director_person_id = Column(String, ForeignKey("artist.id"))
     director_person = relationship(
@@ -64,15 +64,15 @@ class Role(Base):
     artists = relationship("Artist", back_populates="role")
 
 
-# class Comment(Base):
-#     __tablename__ = "comment"
+class Comment(Base):
+    __tablename__ = "comment"
 
-#     id = Column(String, primary_key=True, index=True)
-#     desc = Column(String)
-#     rating = Column(Float)
+    id = Column(String, primary_key=True, index=True)
+    desc = Column(String)
+    rating = Column(Float)
 
-#     movie_id = Column(String, ForeignKey("movie.id"))
-#     movie = relationship("Movie", back_populates="comments")
+    movie_id = Column(String, ForeignKey("movie.id"))
+    movie = relationship("Movie", back_populates="comments")
 
 
 # class User(Base):
