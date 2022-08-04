@@ -74,11 +74,16 @@ class Comment(Base):
     movie_id = Column(String, ForeignKey("movie.id"))
     movie = relationship("Movie", back_populates="comments")
 
+    user_id = Column(String, ForeignKey("user.id"))
+    user = relationship("User", back_populates="comments")
 
-# class User(Base):
-#     __tablename__ = "user"
 
-#     id = Column(String, primary_key=True, index=True)
-#     name = Column(String)
-#     email = Column(String)
-#     password = Column(String)
+class User(Base):
+    __tablename__ = "user"
+
+    id = Column(String, primary_key=True, index=True)
+    name = Column(String)
+    email = Column(String)
+    password = Column(String)
+
+    comments = relationship("Comment")

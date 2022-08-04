@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from models import Base
 from database import engine
 
-from api import comment, movie, role, artist
+from api import comment, movie, role, artist, user
 
 app = FastAPI()
 
@@ -21,3 +21,4 @@ app.include_router(role.router, prefix="/role", tags=["Role"])
 app.include_router(artist.router, prefix="/artist", tags=["Artist"])
 app.include_router(movie.router, prefix="/movie", tags=["Movie"])
 app.include_router(comment.router, prefix="/comment", tags=["Comment"])
+app.include_router(user.router, prefix="/user", tags=["User"])

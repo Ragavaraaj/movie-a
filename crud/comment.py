@@ -23,7 +23,8 @@ def create_comment(db: Session, data: PostComment):
         id=gId,
         desc=data.desc,
         rating=data.rating,
-        movie_id=data.movie_id
+        movie_id=data.movie_id,
+        user_id=data.user_id
     )
 
     db.add(db_comment)

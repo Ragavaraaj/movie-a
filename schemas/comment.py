@@ -9,6 +9,7 @@ class CommentBase(BaseModel):
 
 class PostComment(CommentBase):
     movie_id: str
+    user_id: str
     pass
 
 
