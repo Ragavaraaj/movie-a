@@ -25,5 +25,5 @@ def delete_artist(artist_id: str, db: Session = Depends(get_db)):
 
 
 @router.get("", response_model=List[GetArtist])
-def get_all_artists(db: Session = Depends(get_db)):
-    return crud.get_artists(db)
+def get_specific_artists(type: Union[str, None] = None, db: Session = Depends(get_db)):
+    return crud.get_specific_artists(db, type)
