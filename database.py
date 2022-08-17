@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SQLALCHEMY_DATABASE_URL = "postgresql://{username}:{password}@{host}:{port}/{db_name}".format(
-    username=environ.get('DB_USERNAME', "root"),
+    username=environ.get('DB_USERNAME', "postgres"),
     password=environ.get('DB_PASSWORD', "root"),
     host=environ.get('DB_HOST_NAME', "localhost"),
     port=environ.get('PORT', "5432"),
