@@ -1,4 +1,3 @@
-from typing import List, Union
 from fastapi import APIRouter, Depends, Request
 from database import get_db
 from sqlalchemy.orm import Session
@@ -19,5 +18,17 @@ async def root(request: Request,  db: Session = Depends(get_db)):
 
 @router.get("/directors", response_class=HTMLResponse)
 async def root(request: Request,  db: Session = Depends(get_db)):
-    movieList = movie.get_movies(db)
-    return templates.TemplateResponse("directors.html", {"request": request, "movies": movieList})
+    artistList = artist.get_specific_artists(db, "directors")
+    return templates.TemplateResponse("artist.html", {"request": request, "artists": artistList})
+
+
+@router.get("/actors", response_class=HTMLResponse)
+async def root(request: Request,  db: Session = Depends(get_db)):
+    artistList = artist.get_specific_artists(db, "actors")
+    return templates.TemplateResponse("artist.html", {"request": request, "artists": artistList})
+
+
+@router.get("/actresses", response_class=HTMLResponse)
+async def root(request: Request,  db: Session = Depends(get_db)):
+    artistList = artist.get_specific_artists(db, "actresses")
+    return templates.TemplateResponse("artist.html", {"request": request, "artists": artistList})

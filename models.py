@@ -52,7 +52,9 @@ class Artist(Base):
     role = relationship("Role", back_populates="artists", uselist=False)
 
     movies = relationship(
-        "Movie", primaryjoin="or_(Movie.director_person_id==Artist.id, Movie.actress_person_id==Artist.id, Movie.actor_person_id==Artist.id)")
+        "Movie",
+        primaryjoin="or_(Movie.director_person_id==Artist.id, Movie.actress_person_id==Artist.id, Movie.actor_person_id==Artist.id)"
+    )
 
 
 class Role(Base):

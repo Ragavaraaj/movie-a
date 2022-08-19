@@ -1,6 +1,7 @@
 from uuid import uuid1
+from sqlalchemy import and_
 from sqlalchemy.orm import Session
-from models import Artist
+from models import Artist, Movie, Role
 from schemas.artist import PostArtist
 
 
@@ -12,7 +13,23 @@ def get_artist(db: Session, artist_id: int):
 #     return db.query(Artist).filter(Artist.desc == artist_desc).first()
 
 
-def get_artists(db: Session):
+def get_specific_artists(db: Session, type: str):
+    if(type != None):
+        if(type == "directors"):
+            return db.query(Artist).join(Role).join(
+                Movie,
+                and_(Movie.director_person_id == Artist.id)
+            ).all()
+        if(type == "actors"):
+            return db.query(Artist).join(Role).join(
+                Movie,
+                and_(Movie.actor_person_id == Artist.id)
+            ).all()
+        if(type == "actresses"):
+            return db.query(Artist).join(Role).join(
+                Movie,
+                and_(Movie.actress_person_id == Artist.id)
+            ).all()
     return db.query(Artist).all()
 
 

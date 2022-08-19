@@ -1,0 +1,20 @@
+{% include "base.html" %} {% block page_content %}
+<div class="flex gap-2 flex-wrap">
+  {% for artist in artists %}
+  <button
+    class="w-full grid grid-cols-2 gap-4 m-4 p-4 border-2 border-slate-300 rounded border-solid text-left hover:border-green-500"
+  >
+    <div>
+      <p class="font-semibold">Director Name</p>
+      <p>{{ artist.name }}</p>
+    </div>
+    <div>
+      <p class="font-semibold">Movies Directed</p>
+      {% for movie in artist.movies %}
+      <p>{{ movie.name }}</p>
+      {% endfor %}
+    </div>
+  </button>
+  {% endfor %}
+</div>
+{% endblock %}
